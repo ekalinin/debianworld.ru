@@ -1,7 +1,7 @@
 Что это
 =======
 
-Содержимое сайта debianworld.ru
+Содержимое сайта http://debianworld.ru
 
 Как работает
 ============
@@ -11,7 +11,14 @@
 Установка
 =========
 
-Требуется node.js
+Требуется node.js и установленный глобально hexo.
+Например, используя [envirius](https://github.com/ekalinin/envirius):
+
+```bash
+$ nv mk dw-hexo-2.8.3 --node-prebuilt=0.10.35
+$ nv on dw-hexo-2.8.3
+(dw-hexo-2.8.3) $ npm install -g hexo
+```
 
 Локальный запуск
 ================
