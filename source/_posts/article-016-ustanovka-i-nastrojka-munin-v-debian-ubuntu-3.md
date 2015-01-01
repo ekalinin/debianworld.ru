@@ -1,6 +1,6 @@
 layout: post
 title: Установка и настройка Munin в Debian / Ubuntu — Настройка доступа через Apache, Nginx
-date: 2009-05-22
+date: 2009-05-24
 tags:
 - debian
 - ubuntu

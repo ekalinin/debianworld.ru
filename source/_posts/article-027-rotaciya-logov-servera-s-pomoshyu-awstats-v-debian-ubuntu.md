@@ -3,25 +3,29 @@ title: Ротация логов сервера с помощью AWstats в Deb
 date: 2009-06-19
 tags:
 - awstats
--  debian
--  ubuntu
--  utils
--  ротация
+- debian
+- ubuntu
+- utils
+- ротация
 categories: articles
 permalink: rotaciya-logov-servera-s-pomoshyu-awstats-v-debian-ubuntu
+
 ---
-Не важно, какое средство используется для **анализа лог файлов веб сервера** ([AWStats](http://debianworld.ru/articles/ustanovka-i-nastrojka-awstats-v-debian-lenny-50/ "Установка и настройка AWstats##index##"), [Webalizer](http://debianworld.ru/articles/ustanovka-i-nastrojka-webalizer-v-debian-ubuntu/ "Установка и настройка Webalizer##index##") и др.), рано или поздно встанет вопрос: *Как выполнять ротацию логов, чтобы не навредить статистике посещений?* Эта проблема имеет множество решений, включая [запуск анализа логов на prerotate этапе](http://debianworld.ru/articles/rotaciya-logov-s-pomoshyu-logrotate-v-debian-ubuntu/ "Ротация логов с использованием logrotate##index##") стандартной ротации с использованием logrotate.
+
+Не важно, какое средство используется для **анализа лог файлов веб сервера** ([AWStats](http://debianworld.ru/articles/ustanovka-i-nastrojka-awstats-v-debian-lenny-50/ "Установка и настройка AWstats"), [Webalizer](http://debianworld.ru/articles/ustanovka-i-nastrojka-webalizer-v-debian-ubuntu/ "Установка и настройка Webalizer") и др.), рано или поздно встанет вопрос: *Как выполнять ротацию логов, чтобы не навредить статистике посещений?* Эта проблема имеет множество решений, включая [запуск анализа логов на prerotate этапе](http://debianworld.ru/articles/rotaciya-logov-s-pomoshyu-logrotate-v-debian-ubuntu/ "Ротация логов с использованием logrotate") стандартной ротации с использованием logrotate.
 
 В случае использования **AWstats** можно не прибегать к использованию сторонних средств, а пользоваться возможностями самого **AWstats**. Одной из его возможностей является функция ротации анализируемых лог файлов.
+
 <!-- more -->
+
 Настройка AWstats для ротации логов
-=========================
-Все настройки AWstats хранятся в директории **/etc/awstats/**. Что и как с ними делать было рассказано ранее: [Установка и настройка AWstats](http://debianworld.ru/articles/ustanovka-i-nastrojka-awstats-v-debian-lenny-50/ "Установка и настройка AWstats##index##"). Допустим, что используется та же установка. Следовательно вся дальнейшая работа будет вестись с файлом:
+===================================
+Все настройки AWstats хранятся в директории **/etc/awstats/**. Что и как с ними делать было рассказано ранее: [Установка и настройка AWstats](http://debianworld.ru/articles/ustanovka-i-nastrojka-awstats-v-debian-lenny-50/ "Установка и настройка AWstats"). Допустим, что используется та же установка. Следовательно вся дальнейшая работа будет вестись с файлом:
 
     /etc/awstats/awstats.debianworld.ru.conf
 
 Настройка  AWstats для очистки логов
-----------------------------------------------
+------------------------------------
 Для того, чтобы лог файл был очищен после того, как он был проанализирован, необходимо выставить опцию **PurgeLogFile**:
 
 ``` apache
@@ -32,11 +36,11 @@ permalink: rotaciya-logov-servera-s-pomoshyu-awstats-v-debian-ubuntu
     # Допустимые значения: 0 или 1
     # Значение по умолчанию: 0
     #
-    PurgeLogFile=1    
+    PurgeLogFile=1
 ```
 Очищенный лог файл будет переписан в: **DirData/awstats_archive.configname.log**. Надо иметь в виду, что со временем этот файл так же станет большим и потребует либо ротации, либо сжатия и пр.
 
-Настройка  AWstats для хранения ротированных лог файлов 
+Настройка  AWstats для хранения ротированных лог файлов
 ------------------------------------------------------------------------
 **AWstats** способен выполнять ротацию лог файлов. По умолчанию, эта функция выключена (как и функция очистки лог файла). Чтобы ее включить, необходимо изменить параметр **ArchiveLogRecords**:
 

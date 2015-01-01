@@ -20,7 +20,7 @@ permalink: skachivanie-video-rolikov-s-youtube-google-i-drugih-v-debian-ubuntu
 
 Поддерживает **скачивание видео роликов** со следующих видео хостингов:
 
-  - youtube.com 
+  - youtube.com
   - video.google.(com|au|ca|de|es|fr|it|nl|pl|uk|cn)
   - dailymotion.com
   - guba.com
@@ -60,7 +60,7 @@ permalink: skachivanie-video-rolikov-s-youtube-google-i-drugih-v-debian-ubuntu
 ``` bash
     $ clive --write-conf
 ```
-После чего будет создан файл конфигурации: **~/.clive/config**. 
+После чего будет создан файл конфигурации: **~/.clive/config**.
 
 Примеры использования Clive
 ===========================

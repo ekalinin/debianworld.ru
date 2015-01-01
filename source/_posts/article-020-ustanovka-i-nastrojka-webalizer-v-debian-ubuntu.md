@@ -13,7 +13,7 @@ permalink: ustanovka-i-nastrojka-webalizer-v-debian-ubuntu
 
 **Webalizer** - приложение для анализа логов web серверов. Написан на языке C, и как следствие, очень быстр. **Webalizer** генерирует хорошо детализированную статистику (год, месяц, день), которая легко настраивается и выводится в формате HTML.  Поддерживает обработку следующих типов лог файлов: HTTP Common Logfile Format  (CLF), FTP, Squid.  Кроме того, способен обрабатывать заархивированные лог файлы (gzip, bzip2).
 
-**Webalizer** является альтернативой [рассмотренному ранее AWStats](http://debianworld.ru/articles/ustanovka-i-nastrojka-awstats-v-debian-lenny-50/ "Пример установки и настройки AWStats в Debian / Ubuntu##index##").
+**Webalizer** является альтернативой [рассмотренному ранее AWStats](http://debianworld.ru/articles/ustanovka-i-nastrojka-awstats-v-debian-lenny-50/ "Пример установки и настройки AWStats в Debian / Ubuntu").
 
 <!-- more -->
 

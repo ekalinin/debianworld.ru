@@ -14,7 +14,7 @@ permalink: ustanovka-oracle-instant-client-v-debian-ubuntu
 
 **Oracle Instant Client** - набор утилит и библиотек от **Oracle**, позволяющий запускать приложения, работающие с СУБД Oracle, без необходимости установки стандартного клиента. OCI, OCCI, Pro\*C, ODBC, и JDBC приложения будут работать без каких-либо изменений не зависимо от того: установлен ли **стандартный Oracle Client** или **Oracle Instant Client**. Но при работе с последним будет использоваться значительно меньше места на жестком диске. **SQL*Plus** так же будет работать с **Oracle Instant Client** без каких-либо изменений или перекомпиляций.
 
-**Oracle Instant Client** абсолютно бесплатен, доступен для множества платформ и архитектур, среди которых Mac OS X, Solaris, HP-UX, Linux и т.д. 
+**Oracle Instant Client** абсолютно бесплатен, доступен для множества платформ и архитектур, среди которых Mac OS X, Solaris, HP-UX, Linux и т.д.
 
 <!-- more -->
 
@@ -52,8 +52,8 @@ permalink: ustanovka-oracle-instant-client-v-debian-ubuntu
 
 Допустим, необходмио установить Oracle Instant Client на Debian / Ubuntu архитектуры x86. Для этого необходимо скачать следующие архивы на [странице, посвященной архитектуре x86](http://www.oracle.com/technology/software/tech/oci/instantclient/htdocs/linuxsoft.html "Раздел сайта Oracle, где можно скачать Oracle Instant Client для x86 архитектуры"):
 
-  - oracle-instantclient11.1-basic-11.1.0.7.0-1.i386.rpm 
-  - oracle-instantclient11.1-devel-11.1.0.7.0-1.i386.rpm 
+  - oracle-instantclient11.1-basic-11.1.0.7.0-1.i386.rpm
+  - oracle-instantclient11.1-devel-11.1.0.7.0-1.i386.rpm
   - oracle-instantclient11.1-sqlplus-11.1.0.7.0-1.i386.rpm
 
 Устанавливаем утлититу преобразования rpm архивов в deb:
@@ -79,7 +79,7 @@ permalink: ustanovka-oracle-instant-client-v-debian-ubuntu
     # Пишем в него путь к только что установленному клиенту
     $ echo "/usr/lib/oracle/11.1/client/lib" > /etc/ld.so.conf.d/ora-inst-cl-11.1.0.7.conf
 
-    # обновляем кэша динамических библиотек 
+    # обновляем кэша динамических библиотек
     # и делаем библиотеки видимыми для системы
     $ sudo ldconfig
 ```

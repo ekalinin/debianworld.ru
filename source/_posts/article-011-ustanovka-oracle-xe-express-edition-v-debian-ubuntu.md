@@ -11,7 +11,7 @@ permalink: ustanovka-oracle-xe-express-edition-v-debian-ubuntu
 
 ---
 
-**Oracle Express Edition (Oracle XE)** - это СУБД начального уровня, базирующаяся на основе кода Oracle Database 10g Release 2. Бесплатна для разработки, установки и распространения. **Oracle XE** легка в установке и администрировании: в комплекте идет web-интерфейс для мониторинга системы, управления пользователями, хранилищем и памятью (используется Oracle Application Express). 
+**Oracle Express Edition (Oracle XE)** - это СУБД начального уровня, базирующаяся на основе кода Oracle Database 10g Release 2. Бесплатна для разработки, установки и распространения. **Oracle XE** легка в установке и администрировании: в комплекте идет web-интерфейс для мониторинга системы, управления пользователями, хранилищем и памятью (используется Oracle Application Express).
 Основная целевая аудитория:
 
   - Разработчики открытого программного обеспечения. Для использования в качестве СУБД.
@@ -55,7 +55,7 @@ permalink: ustanovka-oracle-xe-express-edition-v-debian-ubuntu
 Импортируем PGP ключи:
 
 ``` bash
-    $ wget http://oss.oracle.com/el4/RPM-GPG-KEY-oracle -O- | sudo apt-key add - 
+    $ wget http://oss.oracle.com/el4/RPM-GPG-KEY-oracle -O- | sudo apt-key add -
 ```
 Обновляем список доступного програмного обеспечения и устанавливаем **Oracle XE**:
 
@@ -101,3 +101,5 @@ permalink: ustanovka-oracle-xe-express-edition-v-debian-ubuntu
 ```
 
 Вот и все. Далее можно переходить в web-интерфейс  управления СУБД, находящегося по адресу http://127.0.0.1:8080/apex. Необходимо использовать логин system и введенный выше пароль.
+
+Продолжаем [тут](/articles/ustanovka-oracle-xe-express-edition-v-debian-ubuntu-2).

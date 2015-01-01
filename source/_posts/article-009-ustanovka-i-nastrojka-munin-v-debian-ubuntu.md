@@ -88,3 +88,5 @@ permalink: ustanovka-i-nastrojka-munin-v-debian-ubuntu
 ``` bash
     $ sudo /usr/share/munin/munin-update –force-root
 ```
+
+Продолжение [тут](/articles/ustanovka-i-nastrojka-munin-v-debian-ubuntu-2)

@@ -13,7 +13,7 @@ permalink: sozdanie-ppp-vpn-tunnelya-mezhdu-debian-ubuntu-gostevoj-i-host-sistem
 
 ---
 
-**VirtualBox** является  платформой для виртуализации (или просто: **виртуальная машина**) операционных систем (**Windows**, **Linux**, **Mac OS** и т.д.). [Установка и минимальная настройка VirtualBox](http://debianworld.ru/articles/ustanovka-virtualbox-v-debian-lenny-50/ "Установка VirtualBox в Debian / Ubuntu##index##") уже освещалась раннее.
+**VirtualBox** является  платформой для виртуализации (или просто: **виртуальная машина**) операционных систем (**Windows**, **Linux**, **Mac OS** и т.д.). [Установка и минимальная настройка VirtualBox](http://debianworld.ru/articles/ustanovka-virtualbox-v-debian-lenny-50/ "Установка VirtualBox в Debian / Ubuntu") уже освещалась раннее.
 
 Как правило, после установки виртуальной машина возникает необходимость в **установке соединения между гостевой и хост системой**. Для этого есть множество способов, начиная от простого использования **Shared Forleds** или проброса портов в гостевую систему и заканчивая полноценной настройкой сети, включающей создание мостов и  использование таких утилит, как **tunctl**, **brctl**, **ip** и т.д. Но есть способ гораздо проще.
 

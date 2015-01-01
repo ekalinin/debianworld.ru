@@ -1,6 +1,6 @@
 layout: post
 title: Установка Oracle XE (Express Edition) в Debian / Ubuntu - 2
-date: 2009-05-27
+date: 2009-05-28
 tags:
 - debian
 - ubuntu
@@ -11,7 +11,7 @@ permalink: ustanovka-oracle-xe-express-edition-v-debian-ubuntu-2
 
 ---
 
-Продолжаем тему, начатую в [Установка Oracle XE (Express Edition) в Debian / Ubuntu](/articles/ustanovka-oracle-xe-express-edition-v-debian-ubuntu) 
+Продолжаем тему, начатую в [Установка Oracle XE (Express Edition) в Debian / Ubuntu](/articles/ustanovka-oracle-xe-express-edition-v-debian-ubuntu)
 
 <!-- more -->
 
@@ -28,7 +28,7 @@ permalink: ustanovka-oracle-xe-express-edition-v-debian-ubuntu-2
   - Сделать не исполняемым скрипт запуска службы:
 
 ``` bash
-$ sudo chmod -x /etc/init.d/oracle-xe 
+$ sudo chmod -x /etc/init.d/oracle-xe
 ```
   - Изменить соответствующую настройку в /etc/default/oracle-xe:
 
@@ -40,7 +40,7 @@ $ sudo chmod -x /etc/init.d/oracle-xe
 Управление удаленными sql-соединениями
 --------------------------------------
 
-По-умолчанию, Oracle XE не позволяет устанавливать удаленных sql-соединения к базе данных с машин, отличных от той, где выполнялась установка. Для того, чтобы их разрешить, необходимо войти в web-консоль управления СУБД (http://127.0.0.1:8080/apex) и включить "Remote connections": 
+По-умолчанию, Oracle XE не позволяет устанавливать удаленных sql-соединения к базе данных с машин, отличных от той, где выполнялась установка. Для того, чтобы их разрешить, необходимо войти в web-консоль управления СУБД (http://127.0.0.1:8080/apex) и включить "Remote connections":
 
     "Administration" -> включить "Available from local server and remote clients"-> нажать "Apply Changes"
 
@@ -48,7 +48,7 @@ $ sudo chmod -x /etc/init.d/oracle-xe
 
 ``` bash
     $ sqlplus -S system/password@//localhost/XE <<!
-    EXEC DBMS_XDB.SETLISTENERLOCALACCESS(FALSE); 
+    EXEC DBMS_XDB.SETLISTENERLOCALACCESS(FALSE);
     EXIT;
     /
     !
@@ -56,7 +56,7 @@ $ sudo chmod -x /etc/init.d/oracle-xe
 Создание удаленных sql-соединений
 ---------------------------------
 
-При условии, что удаленной машине [установлен Oracle Instant Client](http://debianworld.ru/articles/ustanovka-oracle-instant-client-v-debian-ubuntu/ "Пример установки Oracle Instant Client в Debian / Ubuntu##index##") или oracle-xe-client, с нее можно устанавливать соединения к Oracle XE:
+При условии, что удаленной машине [установлен Oracle Instant Client](http://debianworld.ru/articles/ustanovka-oracle-instant-client-v-debian-ubuntu/ "Пример установки Oracle Instant Client в Debian / Ubuntu") или oracle-xe-client, с нее можно устанавливать соединения к Oracle XE:
 
 ``` bash
     $ sqlplus username/password@//oraclexe.hostname.or.ip//XE

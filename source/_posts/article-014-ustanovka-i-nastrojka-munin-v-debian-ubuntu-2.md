@@ -1,6 +1,6 @@
 layout: post
 title: Установка и настройка Munin в Debian / Ubuntu — Настройка клиента, управление плагинами
-date: 2009-05-22
+date: 2009-05-23
 tags:
 - debian
 - ubuntu
@@ -27,9 +27,9 @@ permalink: ustanovka-i-nastrojka-munin-v-debian-ubuntu-2
     # файл конфигурации munin клиента
     ./munin-node.conf
     # директория настроек плагинов munin клиента
-    ./plugin-conf.d/       
+    ./plugin-conf.d/
     # директория, в которой каждый файл - символическафя ссылка на плагин из /usr/share/munin/plugins
-    ./plugins/                
+    ./plugins/
 ```
 Открываем файл конфигурации Munin клиента:
 
@@ -145,7 +145,7 @@ permalink: ustanovka-i-nastrojka-munin-v-debian-ubuntu-2
 ``` bash
     $ cd /etc/munin/plugins
     $ ./apache_processes autoconf
-    no (no apache server-status on ports 80) 
+    no (no apache server-status on ports 80)
 ```
 После незначительных настроек, получаем требуемый ответ:
 
@@ -159,3 +159,4 @@ permalink: ustanovka-i-nastrojka-munin-v-debian-ubuntu-2
 ``` bash
     $ sudo /etc/init.d/munin-node restart
 ```
+Продолжение [тут](/articles/ustanovka-i-nastrojka-munin-v-debian-ubuntu-3)

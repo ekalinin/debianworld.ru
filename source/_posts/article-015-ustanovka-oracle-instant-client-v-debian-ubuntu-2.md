@@ -1,5 +1,5 @@
 layout: post
-title: Установка Oracle Instant Client в Debian / Ubuntu - 2
+title: Установка Oracle Instant Client в Debian / Ubuntu — Установка вручную
 date: 2009-05-26
 tags:
 - oracle

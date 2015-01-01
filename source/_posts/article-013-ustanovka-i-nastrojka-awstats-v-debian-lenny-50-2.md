@@ -1,6 +1,6 @@
 layout: post
 title: Установка и настройка AWstats в Debian Lenny (5.0)-2
-date: 2009-05-20
+date: 2009-05-21
 tags:
 - debian-lenny
 -  awstats
@@ -45,15 +45,17 @@ permalink: ustanovka-i-nastrojka-awstats-v-debian-lenny-50-2
 
 Очевидно, что доступ к статистике сайта нужен не всем. Чтобы его (доступ) ограничить, необходимо отредактировать файл */etc/apache2/conf.d/awstats* и добавить туда следующие строки:
 
+``` apache
     <Location /cgi-bin>
         Options ExecCGI -MultiViews +SymLinksIfOwnerMatch
 
         AuthType Basic
         AuthName "AWStat. Auth users only"
         AuthUserFile /etc/apache2/.htpasswd
-    
+
         Require valid-user
     </Location>
+```
 
 После чего необходимо создать файл с пользователями, которым будет дан доступ к статестике AWstats:
 
@@ -64,7 +66,7 @@ permalink: ustanovka-i-nastrojka-awstats-v-debian-lenny-50-2
 Запуск анализа логов и генерации статистики AWstats по расписанию (cron)
 ------------------------------------------------------------------------
 
-Файл задания анализа лого и генерации статстики AWstat уже идет в комплекте и лежит тут: /etc/cron.d/awstats. 
+Файл задания анализа лого и генерации статстики AWstat уже идет в комплекте и лежит тут: /etc/cron.d/awstats.
 По умолчанию, файл выглядит следующим образом:
 
 ``` bash

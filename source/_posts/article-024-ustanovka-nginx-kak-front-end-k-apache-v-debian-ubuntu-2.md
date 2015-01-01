@@ -1,26 +1,33 @@
 layout: post
-title: Установка nginx как front-end к apache в Debian / Ubuntu - 2
-date: 2009-06-15
+title: Установка nginx как frontend к apache в Debian / Ubuntu - 2
+date: 2009-06-16
 tags:
 - apache
--  nginx
--  debian
--  ubuntu
--  web-сервер
+- nginx
+- debian
+- ubuntu
+- web-сервер
 categories: articles
 permalink: ustanovka-nginx-kak-front-end-k-apache-v-debian-ubuntu-2
+
 ---
+
+Продолжаем тему, начатую в [Установка nginx как frontend к apache](/articles/ustanovka-nginx-kak-front-end-k-apache-v-debian-ubuntu)
+
+<!-- more -->
+
 Установка и настройка Apache
-====================
+============================
+
 Установка Apache
----------------------
+----------------
 Установка проста:
 
 ``` bash
     $ sudo aptitude install apache2
 ```
 Настройка Apache
----------------------
+----------------
 Корректируем конфигурационный файл:
 
 ``` bash
@@ -31,12 +38,13 @@ permalink: ustanovka-nginx-kak-front-end-k-apache-v-debian-ubuntu-2
 ``` apache
     # Таймаут 90 секунд
     Timeout 90
-    
+
     # Выключаем KeepAlive
     KeepAlive Off
-```
+
     # Имя сервера
     ServerName debianworld.ru
+```
 
 Перезагружаем apache:
 
@@ -68,7 +76,7 @@ permalink: ustanovka-nginx-kak-front-end-k-apache-v-debian-ubuntu-2
     $ sudo /etc/init.d/nginx start
 ```
 Настройка mod_rpaf
--------------------------
+------------------
 Теперь, если посмотреть в логи apache, то там все запросы будут идти с адреса front-end'a. Чтобы это исправить, необходимо установить модуль mod_rpaf:
 
 ``` bash
@@ -85,13 +93,14 @@ permalink: ustanovka-nginx-kak-front-end-k-apache-v-debian-ubuntu-2
     <IfModule mod_rpaf.c>
         # Включаем модуль
         RPAFenable On
-```
+
         # Приводит в порядок X-Host
         RPAFsethostname On
- 
-        # Адрес фронтенда (nginx)       
+
+        # Адрес фронтенда (nginx)
         RPAFproxy_ips 127.0.0.1 192.168.0.1
     </IfModule>
+```
 
 Перезагружаем apache:
 
@@ -99,7 +108,7 @@ permalink: ustanovka-nginx-kak-front-end-k-apache-v-debian-ubuntu-2
     $ sudo /etc/init.d/apache2 force-reload
 ```
 Настройка виртуального хоста в Apache
-------------------------------------------------
+-------------------------------------
 Создаем файл виртуального хоста:
 
 ``` bash
@@ -113,7 +122,7 @@ permalink: ustanovka-nginx-kak-front-end-k-apache-v-debian-ubuntu-2
         ServerAdmin admin@debianworld.ru
         ServerName www.debianworld.ru
         ServerAlias debianworld.ru
-```
+
         <Directory /home/site/debianworld.ru/apache/>
             Order deny,allow
             Allow from all
@@ -122,15 +131,17 @@ permalink: ustanovka-nginx-kak-front-end-k-apache-v-debian-ubuntu-2
         LogLevel warn
         ErrorLog  /home/site/debianworld.ru/logs/apache_error.log
         CustomLog /home/site/debianworld.ru/logs/apache_access.log combined
-        
+
        # Остальные настройки
        # ...
     </VirtualHost>
+```
 
 С описанием правил настройки виртуальных хостов для apache можно ознакомится, например, [тут](http://httpd.apache.org/docs/2.2/vhosts/ "Описание настройки виртуальных хостов для apache2")
 
 Включаем новый хост:
 
-    ##bash##
+``` bash
     $ sudo a2ensite <domain name>
     $ sudo /etc/init.d/apache2 reload
+```

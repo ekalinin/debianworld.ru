@@ -43,8 +43,8 @@ permalink: ustanovka-virtualbox-v-debian-lenny-50
 ```
 Если при запуске появляется ошибка:
 
-    The VirtualBox kernel driver is not accessible to the current user. 
-    Make sure that the user has write permissions for /dev/vboxdrv by adding them to the vboxusers groups. 
+    The VirtualBox kernel driver is not accessible to the current user.
+    Make sure that the user has write permissions for /dev/vboxdrv by adding them to the vboxusers groups.
     You will need to logout for the change to take effect.
     VBox status code: -1909 (VERR_VM_DRIVER_NOT_ACCESSIBLE).
 
