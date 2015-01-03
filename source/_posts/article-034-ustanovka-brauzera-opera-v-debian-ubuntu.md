@@ -3,17 +3,21 @@ title: Установка браузера Opera в Debian / Ubuntu
 date: 2009-07-03
 tags:
 - debian
--  opera
--  ubuntu
--  utils
--  браузер
+- opera
+- ubuntu
+- utils
+- браузер
 categories: articles
 permalink: ustanovka-brauzera-opera-v-debian-ubuntu
+
 ---
+
 **Opera** - один из самых популярных браузеров. Отличается высокой скоростью работы. Распространяется только в бинарном виде (без исходных кодов), но его можно **скачать бесплатно с сайта opera**.
+
 <!-- more -->
+
 Подготовка к установке Opera
-=====================
+============================
 Подключаем новый apt-репозитарий:
 
 ``` bash
@@ -39,7 +43,7 @@ permalink: ustanovka-brauzera-opera-v-debian-ubuntu
     $ gpg --armor --export 6A423791| apt-key add -
 ```
 Установка Opera
-===========
+===============
 Для установки браузера необходимо выполнить:
 
 ``` bash

@@ -3,24 +3,28 @@ title: Установка Chromium (Google Chrome) в Ubuntu
 date: 2009-06-29
 tags:
 - ubuntu
--  chrome
--  utils
--  браузер
--  ubuntu-jaunty
--  ubuntu-intrepid
+- chrome
+- utils
+- браузер
+- ubuntu-jaunty
+- ubuntu-intrepid
 categories: articles
 permalink: ustanovka-chromium-google-chrome-v-ubuntu
+
 ---
+
 **Google Chrome** - веб браузер от компании Google, использующий движок **WebKit**. Отличительной особенностью является то, что каждая вкладка в браузере является отдельным процессом. Таким образом, если при обработке какой-либо закладки возникнет ошибка, то её можно будет закрыть без риска потерять все данные в браузере. Так же был сильно доработан движок JavaScript, что значительно повлияло на скорость работы. Новый **движок javaScript** открыт в исходных кодах в рамках проекта **V8**.
 
 До недавнего времени **Chrome** был доступен только на Windows платформах. Но в начале июня 2009 года были выложены первые публичные сборки  **Google Chrome под Linux** в рамках проекта **Chromium**. В настоящее время эти сборки имеют статус Beta и предназначены в основном для тестирования.
+
 <!-- more -->
+
 Подготовка к установке Chrome
-=====================
+=============================
 В первую очередь необходимо добавить новые apt-репозитарии.
 
 Подготовка к установке Chrome в Ubuntu 9.04 (Jaunty)
-------------------------------------------------------------------
+----------------------------------------------------
 
 ``` bash
     $ sudo su
@@ -28,7 +32,7 @@ permalink: ustanovka-chromium-google-chrome-v-ubuntu
     $ echo "deb-src http://ppa.launchpad.net/chromium-daily/ppa/ubuntu jaunty main" >> /etc/apt/sources.list
 ```
 Подготовка к установке Chrome в Ubuntu 8.10 (Intrepid)
---------------------------------------------------------------------
+------------------------------------------------------
 
 ``` bash
     $ sudo su
@@ -36,7 +40,7 @@ permalink: ustanovka-chromium-google-chrome-v-ubuntu
     $ echo "deb-src http://ppa.launchpad.net/chromium-daily/ppa/ubuntu intrepid main" >> /etc/apt/sources.list
 ```
 Установка ключей
-----------------------
+----------------
 Далее, необходимо установить соответствующие PGP ключи:
 
 ``` bash
@@ -51,13 +55,15 @@ permalink: ustanovka-chromium-google-chrome-v-ubuntu
     gpg: не найдено абсолютно доверяемых ключей
     gpg: Всего обработано: 1
     gpg:               импортировано: 1  (RSA: 1)
-```
+
     # обновление репозитария
     $ sudo aptitude update
+```
 
 Установка Google Chrome (Chromium)
-=========================
+==================================
 И в заключении, остается лишь выполнить тривиальную команду установки:
 
-    ##bash##
+``` bash
     $ sudo aptitude install chromium-browser
+```
