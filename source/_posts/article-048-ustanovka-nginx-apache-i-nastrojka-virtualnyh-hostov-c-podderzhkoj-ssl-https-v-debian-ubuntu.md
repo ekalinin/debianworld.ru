@@ -3,21 +3,24 @@ title: Установка Nginx, Apache и настройка виртуальн
 date: 2009-10-05
 tags:
 - debian
--  ubuntu
--  apache
--  nginx
--  ssl
+- ubuntu
+- apache
+- nginx
+- ssl
 categories: articles
 permalink: ustanovka-nginx-apache-i-nastrojka-virtualnyh-hostov-c-podderzhkoj-ssl-https-v-debian-ubuntu
+
 ---
-Одна из типичных задач: установить стандартную связку Nginx + Apache и настроить два (или более) виртуальных хоста. 
+
+Одна из типичных задач: установить стандартную связку Nginx + Apache и настроить два (или более) виртуальных хоста.
 Виртуальные хосты привязаны к одному IP (**Name-based Virtual Host**). Кроме этого, на один из хостов необходим доступ по **https** (**SSL**).
 
 Ранее уже описывались [преимущества совместной работы Nginx и Apache](http://debianworld.ru/articles/ustanovka-nginx-kak-front-end-k-apache-v-debian-ubuntu/ "Установка nginx фронтэндом к apache ##index##"). Там же описывались и особенности настройки этой связки. В текущем варианте будет больше внимания уделено настройке **SSL**: работой с сертификатами будет заниматься только фронтенд (nginx), бэкенд (apache) будет только отдавать контент.
 
 <!-- more -->
+
 Установка Nginx / Apache
-=========================
+========================
 Устанавливаем необходимые сервера:
 
 ``` bash
@@ -25,8 +28,8 @@ permalink: ustanovka-nginx-apache-i-nastrojka-virtualnyh-hostov-c-podderzhkoj-ss
 ```
 При этом буду установлены так же пакеты:
 
-  * openssl 
-  * openssl-blacklist 
+  * openssl
+  * openssl-blacklist
   * ssl-cert
 
 Если этого не произошло, то необходимо установить их самостоятельно:
@@ -39,7 +42,6 @@ permalink: ustanovka-nginx-apache-i-nastrojka-virtualnyh-hostov-c-podderzhkoj-ss
 Создание ключа
 --------------
 Первым делом необходимо создать приватный ключ (private key):
-
 
 ``` bash
     $ openssl genrsa -des3 -out debianworld.ru.key 2048
@@ -73,12 +75,12 @@ permalink: ustanovka-nginx-apache-i-nastrojka-virtualnyh-hostov-c-podderzhkoj-ss
     Organizational Unit Name (eg, section) []:
     Common Name (eg, YOUR name) []:debianworld-2.ru
     Email Address []:ssl@debianworld-2.ru
-```
+
     Please enter the following 'extra' attributes
     to be sent with your certificate request
     A challenge password []:
     An optional company name []:
-
+```
 
 Удаление пароля из ключа
 ------------------------
@@ -86,10 +88,11 @@ permalink: ustanovka-nginx-apache-i-nastrojka-virtualnyh-hostov-c-podderzhkoj-ss
 
 ``` bash
     $ cp debianworld.ru.key debianworld.ru.key.orig
-```
+
     $ openssl rsa -in debianworld.ru.key.orig -out debianworld.ru.key
     Enter pass phrase for debianworld.ru.key.orig: <пароль-который-указывался-при-создании-debianworld.ru.key>
     writing RSA key
+```
 
 Генерация SSL сертификата
 -------------------------
@@ -173,7 +176,7 @@ permalink: ustanovka-nginx-apache-i-nastrojka-virtualnyh-hostov-c-podderzhkoj-ss
       # Адрес back-end'a
       server 192.168.0.1:8080;
     }
-```
+
     server {
         listen   80;
         server_name debianworld-1.ru;
@@ -188,6 +191,7 @@ permalink: ustanovka-nginx-apache-i-nastrojka-virtualnyh-hostov-c-podderzhkoj-ss
         }
         # ...
     }
+```
 
 Настройка виртуального хоста в Nginx с поддержкой SSL
 -----------------------------------------------------
@@ -199,7 +203,7 @@ permalink: ustanovka-nginx-apache-i-nastrojka-virtualnyh-hostov-c-podderzhkoj-ss
       # Адрес back-end'a
       server 192.168.0.1:8080;
     }
-```
+
     server {
         listen   80;
         server_name debianworld-2.ru;
@@ -233,8 +237,9 @@ permalink: ustanovka-nginx-apache-i-nastrojka-virtualnyh-hostov-c-podderzhkoj-ss
         }
         # ...
     }
+```
 
-В отличие от конфигурации для debianworld-1.ru тут уже появляется описание для 443 порта. 
+В отличие от конфигурации для debianworld-1.ru тут уже появляется описание для 443 порта.
 Идея проста - ssl-соединение создает nginx, а вот данные по этому соединению передает уже apache.
 
 Включение хостов и перезапуск Nginx
@@ -259,7 +264,7 @@ permalink: ustanovka-nginx-apache-i-nastrojka-virtualnyh-hostov-c-podderzhkoj-ss
       # Осн. настройки домена
       ServerAdmin admin@debianworld-1.ru
       ServerName debianworld-1.ru
-```
+
       DocumentRoot /home/sites/debianworld.ru-1/apache/
       <Directory /home/sites/debianworld.ru-1/apache/>
           Order deny,allow
@@ -272,6 +277,7 @@ permalink: ustanovka-nginx-apache-i-nastrojka-virtualnyh-hostov-c-podderzhkoj-ss
       # Остальные настройки
       # ...
     </VirtualHost>
+```
 
 Второй хост:
 
@@ -281,7 +287,7 @@ permalink: ustanovka-nginx-apache-i-nastrojka-virtualnyh-hostov-c-podderzhkoj-ss
       # Осн. настройки домена
       ServerAdmin admin@debianworld-2.ru
       ServerName debianworld-2.ru
-```
+
       DocumentRoot /home/sites/debianworld.ru-2/apache/
       <Directory /home/sites/debianworld.ru-2/apache/>
           Order deny,allow
@@ -294,6 +300,7 @@ permalink: ustanovka-nginx-apache-i-nastrojka-virtualnyh-hostov-c-podderzhkoj-ss
       # Остальные настройки
       # ...
     </VirtualHost>
+```
 
 Далее, необходимо включить хосты и перегрузить apache:
 
@@ -304,10 +311,10 @@ permalink: ustanovka-nginx-apache-i-nastrojka-virtualnyh-hostov-c-podderzhkoj-ss
 ```
 Проверка SSL соединения
 ======================
-Чтобы проверить корректность настройки SSL достаточно открыть в браузере https://debianworld-2.ru/. 
+Чтобы проверить корректность настройки SSL достаточно открыть в браузере https://debianworld-2.ru/.
 Так как используется самоподписанный сертификат, то браузер, вероятнее всего, выдаст предупреждение, что подлинность сервера не может быть проверена, и предоставит возможность просмотреть сертификат. В случае, если текущий домен не совпадает с тем, что указан "Common Name", может быть выдано еще одно предупреждение.
 
-Самоподписанных сертификтов как правило хватает для административных зон на сайтах. 
+Самоподписанных сертификтов как правило хватает для административных зон на сайтах.
 При использовании коммерческих сертификатов никаких предупреждений выдаваться не будет.
 
 Для более тонкой настройки SSL или для решения проблем в TLS/SSL-соединениях следует пользоваться набором утилит openssl. Например:

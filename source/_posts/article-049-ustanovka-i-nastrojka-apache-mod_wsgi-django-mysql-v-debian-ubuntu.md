@@ -3,16 +3,18 @@ title: Установка и настройка Apache, mod_wsgi, Django, MySQL 
 date: 2009-10-09
 tags:
 - debian
--  ubuntu
--  apache
--  mod_wsgi
--  django
--  mysql
--  python
+- ubuntu
+- apache
+- mod_wsgi
+- django
+- mysql
+- python
 categories: articles
 permalink: ustanovka-i-nastrojka-apache-mod_wsgi-django-mysql-v-debian-ubuntu
+
 ---
-**Django** (читается как ** Джанго**) - это свободно распространяемый фреймворк с открытым исходным кодом для разработки веб приложений на языке **Python**. **Django** обладает следующими архитектурными отличиями:
+
+**Django** (читается как **Джанго**) - это свободно распространяемый фреймворк с открытым исходным кодом для разработки веб приложений на языке **Python**. **Django** обладает следующими архитектурными отличиями:
 
   * использование концепции Модель-Представление-Контроллер (Model-View-Controller, **MVC**). В терминологии Django это будет Модель-Шаблон-Вид (Model-Template-View, **MTV**)
   * использование концепции приложений. Весь код рекомендуется оформлять в виде приложений и делать его подключаемым и переносимым
@@ -22,19 +24,20 @@ permalink: ustanovka-i-nastrojka-apache-mod_wsgi-django-mysql-v-debian-ubuntu
   * встроенная административная панель
 
 <!-- more -->
+
 Установка и настройка Django
-====================
+============================
 **Django** можно установить двумя способами: из репозитариев или скачав исходники фреймворка с сайта. Как правило, в репозитариях находится не самая свежая версия. Поэтому, обычно используется второй способ, хотя это и не **Debian-way**.
 
 Установка Django из репозитория
------------------------------------------
+-------------------------------
 Пакет Django находится в стандартном репозитории, поэтому ничего нового подключать не надо. Для установки необходимо выполнить следующее:
 
 ``` bash
     $ sudo aptitude install python-django
 ```
 Установка последней стабильной версии Django
-----------------------------------------------------------
+--------------------------------------------
 Для установки последней версии необходимо скачать исходники и распаковать их:
 
 ``` bash
@@ -62,7 +65,7 @@ permalink: ustanovka-i-nastrojka-apache-mod_wsgi-django-mysql-v-debian-ubuntu
     $ sudo ln -s ~/django/Django-1.1/django/bin/django-admin.py /usr/local/bin
 ```
 Проверка корректности установки Django
---------------------------------------------------
+--------------------------------------
 Чтобы убедиться, что Django нормально установлен, необходимо запустить интерпретатор Python и импортировать модуль django:
 
 ``` bash
@@ -72,7 +75,7 @@ permalink: ustanovka-i-nastrojka-apache-mod_wsgi-django-mysql-v-debian-ubuntu
 Все в порядке. Последняя версия Django корректно установлена.
 
 Установка и настройка Apache, mod_wsgi
-============================
+======================================
 Для работы с **Django** необходимы **http-сервер Apache** и модуль к нему - **mod-wsgi**. Модуль mod_wsgi пришел на смену mod_python и в настоящее время рекомендуется авторами Django как наиболее подходящее решение для использования в реальных условиях.
 
 Установка Apache и mod_wsgi тривиальна:
@@ -81,7 +84,7 @@ permalink: ustanovka-i-nastrojka-apache-mod_wsgi-django-mysql-v-debian-ubuntu
     $ sudo aptitude install apache2 libapache2-mod-wsgi
 ```
 Установка MySQL
-============
+===============
 Кроме самого сервера MySQL необходимо также установить пакет, который позволяет работать с MySQL из Python:
 
 ``` bash
@@ -90,17 +93,17 @@ permalink: ustanovka-i-nastrojka-apache-mod_wsgi-django-mysql-v-debian-ubuntu
 При установке необходимо будет указать пароль для root-пользователя БД MySQL.
 
 Создание и настройка проекта в Django
-===========================
+=====================================
 При создании проекта будем исходить из того, что код Django-проекта должен работать от имени отдельного системного пользователя.
 
 Создание проекта Django
--------------------------------
+-----------------------
 Далее приведен код создание Django-проекта и некоторых дополнительных директорий в нем:
 
 ``` bash
     # директория для django проектов
     $ sudo mkdir -p /home/django-projects/debianworld_ru
-```
+
     # новый django-проект
     $ cd /home/django-projects/debianworld_ru
     $ sudo django-admin.py startproject apps
@@ -116,6 +119,7 @@ permalink: ustanovka-i-nastrojka-apache-mod_wsgi-django-mysql-v-debian-ubuntu
 
     # директория для логов
     $ sudo mkdir -p /home/django-projects/debianworld_ru/logs
+```
 
 Создание пользователя для проекта
 ----------------------------------
@@ -124,7 +128,7 @@ permalink: ustanovka-i-nastrojka-apache-mod_wsgi-django-mysql-v-debian-ubuntu
 ``` bash
     # создается системная группа
     $ sudo addgroup --quiet --system dw
-```
+
     # создается системный пользователь
     $ sudo adduser --quiet --system --ingroup dw --no-create-home --no-create-home dw
 
@@ -134,6 +138,7 @@ permalink: ustanovka-i-nastrojka-apache-mod_wsgi-django-mysql-v-debian-ubuntu
     # права доступа на проект. Право на чтение для www-data необходимо
     # для корректной отдачи статики
     $ sudo chmod u=rwx,g=rx,o= -R /home/django-projects/debianworld_ru
+```
 
 Настройка виртуального хоста в Apache
 -------------------------------------
@@ -150,7 +155,7 @@ permalink: ustanovka-i-nastrojka-apache-mod_wsgi-django-mysql-v-debian-ubuntu
         # Описание сервера
         ServerAdmin admin@wsgi.debianworld.ru
         ServerName wsgi.debianworld.ru
-```
+
         # Логи
         ErrorLog    /home/django-projects/debianworld_ru/logs/error_log
         CustomLog   /home/django-projects/debianworld_ru/logs/access_log common
@@ -174,6 +179,7 @@ permalink: ustanovka-i-nastrojka-apache-mod_wsgi-django-mysql-v-debian-ubuntu
             SetHandler None
         </Location>
     </VirtualHost>
+```
 
 В данном случае 10.1.0.4 - это IP-адрес машины, на которой работает Apache.
 
@@ -190,7 +196,7 @@ permalink: ustanovka-i-nastrojka-apache-mod_wsgi-django-mysql-v-debian-ubuntu
     #/usr/bin/python
     # -*- coding: utf-8 -*-
     import os, sys
-```
+
     # В python path добавляется директория проекта
     dn = os.path.dirname
     PROJECT_ROOT = os.path.abspath( dn(dn(__file__)) )
@@ -203,6 +209,7 @@ permalink: ustanovka-i-nastrojka-apache-mod_wsgi-django-mysql-v-debian-ubuntu
     # Запуск wsgi-обработчика
     import django.core.handlers.wsgi
     application = django.core.handlers.wsgi.WSGIHandler()
+```
 
 
 Включение виртуального хоста Apache
@@ -213,12 +220,13 @@ permalink: ustanovka-i-nastrojka-apache-mod_wsgi-django-mysql-v-debian-ubuntu
     # Добавляет ссылку на виртуальный хост в список доступных хостов
     $ sudo ln -s /home/django-projects/debianworld_ru/deploy/debianworld.ru \
                  /etc/apache2/sites-available/debianworld.ru
-```
+
     # включаем виртуальный хост
     $ sudo a2ensite debianworld.ru
 
     # рестарт Apache
     $ sudo /etc/init.d/apache2 restart
+```
 
 Проверка корректности установки
 -------------------------------
@@ -245,12 +253,13 @@ permalink: ustanovka-i-nastrojka-apache-mod_wsgi-django-mysql-v-debian-ubuntu
 ``` sql
     mysql> CREATE DATABASE debianworld_db CHARACTER SET utf8;
     Query OK, 1 row affected (0.01 sec)
-```
+
     mysql> CREATE USER debianworld_usr@localhost IDENTIFIED BY 'mega-secure-password';
     Query OK, 0 rows affected (0.00 sec)
 
     mysql> GRANT ALL ON debianworld_db.* TO debianworld_usr@localhost;
     Query OK, 0 rows affected (0.00 sec)
+```
 
 После того, как новые БД и пользователь готовы, необходимо прописать их в конфиг Django. Для этого необходимо открыть файл настроек:
 
@@ -288,7 +297,7 @@ permalink: ustanovka-i-nastrojka-apache-mod_wsgi-django-mysql-v-debian-ubuntu
     Creating table django_content_type
     Creating table django_session
     Creating table django_site
-```
+
     You just installed Django's auth system, which means you don't have any superusers defined.
     Would you like to create one now? (yes/no): yes
     Username (Leave blank to use 'dw'): admin
@@ -298,6 +307,7 @@ permalink: ustanovka-i-nastrojka-apache-mod_wsgi-django-mysql-v-debian-ubuntu
     Superuser created successfully.
     Installing index for auth.Permission model
     Installing index for auth.Message model
+```
 
 Вот и все. Теперь Django настроено полностью. Далее можно создавать приложения слдеующей командой:
 
@@ -306,7 +316,8 @@ permalink: ustanovka-i-nastrojka-apache-mod_wsgi-django-mysql-v-debian-ubuntu
 ```
 или непосредственно под тем пользователем, под которым работает весь код проекта:
 
-    ##bash##
+``` bash
     $ sudo -u dw bash
     $ cd /home/django-projects/debianworld_ru/apps/
     $ ./manage.py startapp firstapp
+```

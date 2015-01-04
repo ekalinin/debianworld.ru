@@ -3,11 +3,13 @@ title: Установка GRUB 2 на Debian / Ubuntu
 date: 2009-08-31
 tags:
 - grub-2
--  debian
--  ubuntu
+- debian
+- ubuntu
 categories: articles
 permalink: ustanovka-grub-2-na-debian-ubuntu
+
 ---
+
 **GRUB 2** - это новый загрузчик, написанный с нуля с целью реализации модульности и переносимости. **GRUB 2** ставит перед собой следующие цели:
 
   * поддержка скриптового языка (циклы, условия, переменные, функции)
@@ -18,10 +20,11 @@ permalink: ustanovka-grub-2-na-debian-ubuntu
   * управление памятью
   * кросс-платформенная установка, позволяющая устанавливать GRUB из различных архитектур
   * режим восстановления (satge 1.5 исключен)
+
 <!-- more -->
 
 Установка GRUB 2
-============
+================
 Для установки необходимо выполнить следующую команду:
 
 ``` bash
@@ -47,19 +50,19 @@ permalink: ustanovka-grub-2-na-debian-ubuntu
 
 ``` bash
     GRUB upgrade scripts have detected a GRUB Legacy setup in /boot/grub.
-    In order to replace the Legacy version of GRUB in your system, it is recommended 
+    In order to replace the Legacy version of GRUB in your system, it is recommended
     that /boot/grub/menu.lst is adjusted to chainload GRUB 2 from your existing GRUB Legacy setup.
-    This step may be automaticaly performed now.                                                                                                                                                                                                                      
+    This step may be automaticaly performed now.
 ```
-    It's recommended that you accept chainloading GRUB 2 from menu.lst, and verify 
-    that your new GRUB 2 setup is functional for you, before you install it directly to 
+    It's recommended that you accept chainloading GRUB 2 from menu.lst, and verify
+    that your new GRUB 2 setup is functional for you, before you install it directly to
     your MBR (Master Boot Record).
 
-    In either case, whenever you want GRUB 2 to be loaded directly from MBR, 
-    you can do so by issuing (as root) the following command:                                                                                        
-        upgrade-from-grub-legacy                                                                                                                                                                                                  
+    In either case, whenever you want GRUB 2 to be loaded directly from MBR,
+    you can do so by issuing (as root) the following command:
+        upgrade-from-grub-legacy
 
-    Chainload from menu.lst?                                                                                                                                                                                                  
+    Chainload from menu.lst?
 
 
 Необходимо ответить: Yes
@@ -67,10 +70,10 @@ permalink: ustanovka-grub-2-na-debian-ubuntu
 Следующий вопрос:
 
 ``` bash
-    The following Linux command line was extracted from the `kopt' parameter in GRUB Legacy's menu.lst.  
+    The following Linux command line was extracted from the `kopt' parameter in GRUB Legacy's menu.lst.
     Please verify that it is correct, and modify it if necessary.
 ```
-    Linux command line:  
+    Linux command line:
 
 Необходимо оставить пустую строку и нажать enter.
 
@@ -86,23 +89,23 @@ permalink: ustanovka-grub-2-na-debian-ubuntu
 
 ``` bash
     $ sudo upgrade-from-grub-legacy
-    
+
     Installing GRUB to Master Boot Record of your first hard drive ...
-    
+
     Installation finished. No error reported.
     This is the contents of the device map /boot/grub/device.map.
     Check if this is correct or not. If any of the lines is incorrect,
     fix it and re-run the script `grub-install'.
-    
+
     (hd0)        /dev/sda
-    
+
     GRUB Legacy has been removed, but its configuration files have been preserved,
     since this script cannot determine if they contain valuable information.  If
     you would like to remove the configuration files as well, use the following
     command:
-    
+
       rm -f /boot/grub/menu.lst*
-    
+
 После чего необходимо еще раз перезагрузиться:
 ```
 ``` bash
@@ -111,15 +114,15 @@ permalink: ustanovka-grub-2-na-debian-ubuntu
 Теперь при старте системы будет работать GRUB 2.
 
 Возможные проблемы GRUB 2 в ubuntu 9.04
-=============================
+=======================================
 
 Error 11: Unrecognized device string
-------------------------------------------
+------------------------------------
 После первой перезагурки, может появится следующее сообщение:
 
 ``` bash
     Error 11: Unrecognized device string
-    
+
     Press any key to continue...
 ```
 Чтобы ее исправить необходимо:

@@ -3,19 +3,22 @@ title: Общение в Twitter через Pidgin в Ubuntu
 date: 2009-09-16
 tags:
 - ubuntu
--  pidgin
--  twitter
--  instant-messaging
+- pidgin
+- twitter
+- instant-messaging
 categories: articles
 permalink: obshechenie-v-twitter-cherez-pidgin-v-ubuntu
+
 ---
+
 **Twitter** - бесплатная система микроблогов (читается как **твиттер**), позволяющая пользователям отправлять короткие текстовые заметки (до 140 символов). Отправлять сообщения можно используя веб-интерфейс, SMS, службы мгновенных сообщений или сторонние программы-клиенты. 
 
 Но с недавнего времени появилась возможность делать посты в twitter через популярный мессенджер pidgin, превратить его в полноценный **twitter клиент**. Новая функциональность появилась благодаря плагину **microblog-purple**.
+
 <!-- more -->
 
 Установка плагина для Twitter - microblog-purple
-=================================
+================================================
 Первым делом необходимо добавить новые репозитории.
 
 Для **Ubuntu Jaunty 9.04**:
@@ -40,5 +43,6 @@ permalink: obshechenie-v-twitter-cherez-pidgin-v-ubuntu
 ```
 И, наконец, сама установка плагина для Twitter в pidgin:
 
-    ##bash##
+``` bash
     $ sudo aptitude install pidgin-microblog
+```

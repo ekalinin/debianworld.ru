@@ -3,22 +3,26 @@ title: Установка qutIM в Debian / Ubuntu
 date: 2009-09-09
 tags:
 - ubuntu
--  qutim
--  debian
--  instant-messaging
--  icq
--  jabber
--  irc
+- qutim
+- debian
+- instant-messaging
+- icq
+- jabber
+- irc
 categories: articles
 permalink: ustanovka-qutim-v-debian-ubuntu
+
 ---
+
 **qutIM** - новый многопротокольный (**ICQ**, **Jabber**/GTalk, Ya.Online, LiveJournal.com/, **Mail.Ru**, **IRC**,  **В контакте**) клиент для обмена мгновенными сообщениями. Основной язык реализации - C++,  библиотека - Qt 4.3, что обеспечивает кроссплатформенность клиента. **qutIM** предоставляет интерфейс для расширения функциональности через плагины, в частности, так реализованы все поддерживаемые протоколы. **qutIM** бесплатен и распространяется в исходных кодах.
 
 Основные возможности:
 
   * X-статусы
   * Поддержка плагинов
+
 <!-- more -->
+
   * Использование вкладок в окнах сообщений
   * Спам-фильтр
   * Приватные списки
@@ -35,7 +39,7 @@ permalink: ustanovka-qutim-v-debian-ubuntu
   * Уведомления о наборе текста
 
 Установка qutIM
-===========
+===============
 Перед началом установки необходимо прописать пути к репозитариям:
 
 Для **Ubuntu Karmic Koala 9.10**:
@@ -104,5 +108,6 @@ permalink: ustanovka-qutim-v-debian-ubuntu
 ```
 И самое простое - это **установка qutim**:
 
-    ##bash##
+``` bash
     $ sudo aptitude install qutim
+```

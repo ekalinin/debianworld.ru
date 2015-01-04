@@ -3,20 +3,24 @@ title: Установка Skype в Debian / Ubuntu
 date: 2009-09-11
 tags:
 - debian
--  skype
--  ubuntu
--  instant-messaging
+- skype
+- ubuntu
+- instant-messaging
 categories: articles
 permalink: ustanovka-skype-v-debian-ubuntu
+
 ---
+
 **Skype** - бесплатный клиент с закрытыми исходными кодами, позволяющий выполнять **голосовые звонки через интернет** (**VoIP**). Предоставляет следующие возможности:
 
   * организация конференц-связи
   * передача текстовых сообщений и файлов
   * видеосвязь
+
 <!-- more -->
+
 Установка Skype
-============
+===============
 Первым делом необходимо прописать новый репозиторий, из которого будет установлен Skype:
 
 ``` bash
@@ -30,5 +34,6 @@ permalink: ustanovka-skype-v-debian-ubuntu
 ```
 После этого можно приступать к **установке skype**:
 
-    ##bash##
+``` bash
     $ sudo aptitude install skype
+```
